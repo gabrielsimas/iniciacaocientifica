@@ -1,18 +1,18 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Turma {
+public class OrmTurma {
 	
 	private Integer codigo;
 	private Character turma;
-	private List<Curso> cursos;
-	private List<Serie> series;
+	private List<OrmCurso> cursos;
+	private List<OrmSerie> series;
 	
-	public Turma() {
+	public OrmTurma() {
 	}
 
-	public Turma(Integer codigo, Character turma, List<Curso> cursos, List<Serie> series) {
+	public OrmTurma(Integer codigo, Character turma, List<OrmCurso> cursos, List<OrmSerie> series) {
 		this.codigo = codigo;
 		this.turma = turma;
 		this.cursos = cursos;
@@ -35,19 +35,19 @@ public class Turma {
 		this.turma = turma;
 	}
 
-	public List<Curso> getCursos() {
+	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 
-	public List<Serie> getSeries() {
+	public List<OrmSerie> getSeries() {
 		return series;
 	}
 
-	public void setSeries(List<Serie> series) {
+	public void setSeries(List<OrmSerie> series) {
 		this.series = series;
 	}
 

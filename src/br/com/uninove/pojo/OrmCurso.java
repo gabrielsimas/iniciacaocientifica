@@ -1,22 +1,22 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Curso {
+public class OrmCurso {
 
 	private Integer codigo;
 	private String nome;
-	private List<Campus> campi;
-	private List<Turno> turnos;
-	private List<Professor> professores;
-	private List<Disciplina> disciplinas; 
-	private List<Turma> turmas;
+	private List<OrmCampus> campi;
+	private List<OrmTurno> turnos;
+	private List<OrmProfessor> professores;
+	private List<OrmDisciplina> disciplinas; 
+	private List<OrmTurma> turmas;
 	
-	public Curso() {
+	public OrmCurso() {
 	}
 
-	public Curso(Integer codigo, String nome, List<Campus> campi, List<Turno> turnos, List<Professor> professores, 
-			     List<Disciplina> disciplinas, List<Turma> turmas) {
+	public OrmCurso(Integer codigo, String nome, List<OrmCampus> campi, List<OrmTurno> turnos, List<OrmProfessor> professores, 
+			     List<OrmDisciplina> disciplinas, List<OrmTurma> turmas) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.campi = campi;
@@ -42,43 +42,43 @@ public class Curso {
 		this.nome = nome;
 	}
 
-	public List<Campus> getCampi() {
+	public List<OrmCampus> getCampi() {
 		return campi;
 	}
 
-	public void setCampi(List<Campus> campi) {
+	public void setCampi(List<OrmCampus> campi) {
 		this.campi = campi;
 	}
 
-	public List<Turno> getTurnos() {
+	public List<OrmTurno> getTurnos() {
 		return turnos;
 	}
 
-	public void setTurnos(List<Turno> turnos) {
+	public void setTurnos(List<OrmTurno> turnos) {
 		this.turnos = turnos;
 	}
 
-	public List<Professor> getProfessores() {
+	public List<OrmProfessor> getProfessores() {
 		return professores;
 	}
 
-	public void setProfessores(List<Professor> professores) {
+	public void setProfessores(List<OrmProfessor> professores) {
 		this.professores = professores;
 	}
 
-	public List<Disciplina> getDisciplinas() {
+	public List<OrmDisciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Disciplina> disciplinas) {
+	public void setDisciplinas(List<OrmDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 
-	public List<Turma> getTurmas() {
+	public List<OrmTurma> getTurmas() {
 		return turmas;
 	}
 
-	public void setTurmas(List<Turma> turmas) {
+	public void setTurmas(List<OrmTurma> turmas) {
 		this.turmas = turmas;
 	}
 

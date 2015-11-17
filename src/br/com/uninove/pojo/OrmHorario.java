@@ -1,17 +1,17 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import org.joda.time.LocalTime;
 
-public class Horario {
+public class OrmHorario {
 
 	private Integer codigo;
 	private LocalTime horarioInicial;
 	private LocalTime horarioFinal;
 	
-	public Horario() {
+	public OrmHorario() {
 	}
 
-	public Horario(Integer codigo, LocalTime horarioInicial, LocalTime horarioFinal) {
+	public OrmHorario(Integer codigo, LocalTime horarioInicial, LocalTime horarioFinal) {
 		super();
 		this.codigo = codigo;
 		this.horarioInicial = horarioInicial;

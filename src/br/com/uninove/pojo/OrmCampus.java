@@ -1,17 +1,17 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Campus {
+public class OrmCampus {
 	
 	private Integer codigo;
 	private String nome;
-	private List<Curso> cursos;
+	private List<OrmCurso> cursos;
 	
-	public Campus() {
+	public OrmCampus() {
 	}
 
-	public Campus(Integer codigo, String nome, List<Curso> cursos) {
+	public OrmCampus(Integer codigo, String nome, List<OrmCurso> cursos) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cursos = cursos;
@@ -33,11 +33,11 @@ public class Campus {
 		this.nome = nome;
 	}
 
-	public List<Curso> getCursos() {
+	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 

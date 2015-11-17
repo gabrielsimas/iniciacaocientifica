@@ -1,18 +1,18 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Disciplina {
+public class OrmDisciplina {
 	
 	private Integer codigo;
 	private String nome;
-	private List<Professor> professores;
-	private List<Curso> cursos;
+	private List<OrmProfessor> professores;
+	private List<OrmCurso> cursos;
 	
-	public Disciplina() {
+	public OrmDisciplina() {
 	}
 	
-	public Disciplina(Integer codigo, String nome, List<Professor> professores, List<Curso> cursos) {
+	public OrmDisciplina(Integer codigo, String nome, List<OrmProfessor> professores, List<OrmCurso> cursos) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.professores = professores;
@@ -35,19 +35,19 @@ public class Disciplina {
 		this.nome = nome;
 	}
 
-	public List<Professor> getProfessores() {
+	public List<OrmProfessor> getProfessores() {
 		return professores;
 	}
 
-	public void setProfessores(List<Professor> professores) {
+	public void setProfessores(List<OrmProfessor> professores) {
 		this.professores = professores;
 	}
 
-	public List<Curso> getCursos() {
+	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 

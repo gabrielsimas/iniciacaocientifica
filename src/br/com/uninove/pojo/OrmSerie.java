@@ -1,17 +1,17 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Serie {
+public class OrmSerie {
 	
 	private Integer codigo;
 	private String nome;
-	private List<Turma> turmas;
+	private List<OrmTurma> turmas;
 	
-	public Serie() {
+	public OrmSerie() {
 	}
 
-	public Serie(Integer codigo, String nome, List<Turma> turmas) {
+	public OrmSerie(Integer codigo, String nome, List<OrmTurma> turmas) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.turmas = turmas;
@@ -33,11 +33,11 @@ public class Serie {
 		this.nome = nome;
 	}
 
-	public List<Turma> getTurmas() {
+	public List<OrmTurma> getTurmas() {
 		return turmas;
 	}
 
-	public void setTurmas(List<Turma> turmas) {
+	public void setTurmas(List<OrmTurma> turmas) {
 		this.turmas = turmas;
 	}
 

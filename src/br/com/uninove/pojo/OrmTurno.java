@@ -1,17 +1,17 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Turno {
+public class OrmTurno {
 	
 	private Integer codigo;
-	private Horario horario;
-	private List<Curso> cursos;
+	private OrmHorario horario;
+	private List<OrmCurso> cursos;
 	
-	public Turno() {
+	public OrmTurno() {
 	}
 
-	public Turno(Integer codigo, Horario horario, List<Curso> cursos) {
+	public OrmTurno(Integer codigo, OrmHorario horario, List<OrmCurso> cursos) {
 		this.codigo = codigo;
 		this.horario = horario;
 		this.cursos = cursos;
@@ -25,19 +25,19 @@ public class Turno {
 		this.codigo = codigo;
 	}
 
-	public Horario getHorario() {
+	public OrmHorario getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Horario horario) {
+	public void setHorario(OrmHorario horario) {
 		this.horario = horario;
 	}
 
-	public List<Curso> getCursos() {
+	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 

@@ -1,20 +1,20 @@
-package br.com.uninove.iniciacaocientifica.pojo;
+package br.com.uninove.pojo;
 
 import java.util.List;
 
-public class Professor {
+public class OrmProfessor {
 	
 	private Integer codigo;
 	private String nome;
 	private String email;
-	private List<Disciplina> disciplinas;
-	private List<Campus> campi;
-	private List<Curso> cursos;
+	private List<OrmDisciplina> disciplinas;
+	private List<OrmCampus> campi;
+	private List<OrmCurso> cursos;
 	
-	public Professor() {
+	public OrmProfessor() {
 	}
 
-	public Professor(Integer codigo, String nome, String email, List<Disciplina> disciplinas, List<Campus> campi, List<Curso> cursos) {
+	public OrmProfessor(Integer codigo, String nome, String email, List<OrmDisciplina> disciplinas, List<OrmCampus> campi, List<OrmCurso> cursos) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
@@ -47,27 +47,27 @@ public class Professor {
 		this.email = email;
 	}
 
-	public List<Disciplina> getDisciplinas() {
+	public List<OrmDisciplina> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(List<Disciplina> disciplinas) {
+	public void setDisciplinas(List<OrmDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 
-	public List<Campus> getCampi() {
+	public List<OrmCampus> getCampi() {
 		return campi;
 	}
 
-	public void setCampi(List<Campus> campi) {
+	public void setCampi(List<OrmCampus> campi) {
 		this.campi = campi;
 	}
 
-	public List<Curso> getCursos() {
+	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<Curso> cursos) {
+	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 
