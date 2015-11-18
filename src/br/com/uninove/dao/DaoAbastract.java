@@ -1,16 +1,17 @@
-package br.com.uninove.DAO;
+package br.com.uninove.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.MySQLConnection;
-import com.mysql.jdbc.PreparedStatement;
+
 
 public abstract class DaoAbastract implements IDAO {
 	protected String table;
-	protected MySQLConnection con;
+	protected Connection con;
 	
 	public  void close(){
 		try {
@@ -52,7 +53,7 @@ public abstract class DaoAbastract implements IDAO {
 				id = resultset.getInt(1);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return id + 1;
 	}
@@ -80,7 +81,7 @@ public abstract class DaoAbastract implements IDAO {
 	public ResultSet listaResultSet(String where, Object[] valores) {
 		String query = "SELECT * FROM " + this.table + " " + where;
 		try {
-			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+			PreparedStatement ps =  con.prepareStatement(query);
 			if (valores != null) {
 				ps = new Conexao().where(ps, valores);
 			}

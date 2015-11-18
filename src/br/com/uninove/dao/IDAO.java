@@ -1,8 +1,7 @@
-package br.com.uninove.DAO;
+package br.com.uninove.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import com.mysql.jdbc.PreparedStatement;
 
 public interface IDAO {
 	public void insert(Object orm);

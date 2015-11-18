@@ -1,20 +1,25 @@
-package br.com.uninove.DAO;
+package br.com.uninove.dao;
 
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.MySQLConnection;
-import com.mysql.jdbc.PreparedStatement;
+
+
+
+
+
+
 
 public  class Conexao {
 	final private String driver = "com.mysql.jdbc.Driver";
     final private String url = "jdbc:mysql://localhost/alocacao_de_prof";
     final private String usuario = "root";
     final private String senha = "root";
-	private MySQLConnection conexao;
+	private Connection conexao;
     public ResultSet resultset;
 
     public Connection conecta() throws Exception
@@ -22,7 +27,7 @@ public  class Conexao {
         try
         {
             Class.forName(driver);
-            conexao = (MySQLConnection) DriverManager.getConnection(url, usuario, senha);
+            conexao =  DriverManager.getConnection(url, usuario, senha);
 //            JOptionPane.showMessageDialog(null, "Banco de Dados Conectado!");
         }
         catch(ClassNotFoundException Driver)

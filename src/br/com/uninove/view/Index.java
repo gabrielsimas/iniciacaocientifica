@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.uninove.DAO.DaoProfessor;
+import br.com.uninove.dao.DaoProfessor;
 import br.com.uninove.pojo.OrmProfessor;
 
 @WebServlet(urlPatterns="/teste")

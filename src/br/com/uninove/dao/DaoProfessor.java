@@ -1,10 +1,8 @@
-package br.com.uninove.DAO;
+package br.com.uninove.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.MySQLConnection;
-import com.mysql.jdbc.PreparedStatement;
 
 import br.com.uninove.pojo.OrmProfessor;
 
@@ -13,7 +11,7 @@ public class DaoProfessor extends DaoAbastract {
 	public DaoProfessor() {
 		this.table = "professores";
 		try {
-			this.con = (MySQLConnection) new Conexao().conecta();
+			this.con = new Conexao().conecta();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,7 +28,7 @@ public class DaoProfessor extends DaoAbastract {
 			preencherParametros(professor, ps);
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -44,7 +42,7 @@ public class DaoProfessor extends DaoAbastract {
 			preencherParametros(professor, ps);
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
