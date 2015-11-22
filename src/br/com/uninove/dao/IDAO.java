@@ -2,17 +2,18 @@ package br.com.uninove.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
-public interface IDAO {
-	public void insert(Object orm);
-	public void update(Object orm);
-	public void delete(String where, Object[] valores);
+public interface IDAO<T> {
+	void insert(T orm);
+	void update(T orm);
+	void delete(String where, T[] valores);
 	
-	public java.util.List<Object> listaObjetos(String where, Object[] valores);
+	List<ResultSet> listaObjetos(String where, T[] valores);
 	
-	public ResultSet listaResultSet(String query, Object[] valores);
+	ResultSet listaResultSet(String query, T[] valores);
 	
-	public Object preencherORM(Object orm) throws Exception;
+	ResultSet preencherORM(ResultSet resultSet) throws Exception;
 	
-	public void preencherParametros(Object orm, PreparedStatement ps);
+	void preencherParametros(T orm, PreparedStatement ps);
 }

@@ -2,6 +2,7 @@ package br.com.uninove.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,12 +22,10 @@ public class Index extends HttpServlet {
 		
 		DaoProfessor dao = new DaoProfessor();
 		OrmProfessor professor = new OrmProfessor();
+		OrmProfessor [] arrayProfessores = null;
 		
-		List<Object> lista = dao.listaObjetos(" Where nome like ?", new Object[] {"j%"} );
-		professor = (OrmProfessor) lista.get(0);
-		professor.setNome("jonnat");
+		List<ResultSet> lista = dao.listaObjetos(" Where nome like ?", arrayProfessores);
 //		professor.setEmail("jonnathanvb@gmail.com");
-		dao.update(professor);
 		
 		PrintWriter writer = resp.getWriter();
 		

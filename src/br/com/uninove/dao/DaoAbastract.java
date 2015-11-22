@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public abstract class DaoAbastract implements IDAO {
+public abstract class DaoAbastract<T> implements IDAO<T> {
 	protected String table;
 	protected Connection con;
 	
@@ -22,27 +20,23 @@ public abstract class DaoAbastract implements IDAO {
 	}
 
 	@Override
-	public abstract void insert(Object orm);
+	public abstract void insert(T orm);
 
 	@Override
-	public abstract void update(Object orm);
+	public abstract void update(T orm);
 
 	@Override
-	public void delete(String where, Object[] valores) {
+	public void delete(String where, T[] valores) {
 		String query = "DELETE * FROM " + this.table + where;
 		try {
-			PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query);
 			if (valores != null) {
-
 				ps = new Conexao().where(ps, valores);
-
 			}
-			
 			ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public int LastId(){
@@ -59,17 +53,14 @@ public abstract class DaoAbastract implements IDAO {
 	}
 
 	@Override
-	public List<Object> listaObjetos(String where, Object[] valores) {
-
+	public List<ResultSet> listaObjetos(String where, T[] valores) {
 		ResultSet resultset = this.listaResultSet(where, valores);
-		List<Object> lista = new ArrayList<Object>();
+		List<ResultSet> lista = new ArrayList<>();
 
 		try {
-
 			while (resultset.next()) {
-				lista.add(this.preencherORM(resultset));
+				   lista.add(preencherORM(listaResultSet(where, valores)));
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,30 +69,20 @@ public abstract class DaoAbastract implements IDAO {
 	}
 
 	@Override
-	public ResultSet listaResultSet(String where, Object[] valores) {
+	public ResultSet listaResultSet(String where, T[] valores) {
 		String query = "SELECT * FROM " + this.table + " " + where;
 		try {
 			PreparedStatement ps =  con.prepareStatement(query);
 			if (valores != null) {
 				ps = new Conexao().where(ps, valores);
 			}
-
 			ResultSet list = ps.executeQuery();
-
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
-
-	@Override
-	public abstract Object preencherORM(Object orm) throws Exception;
-
-	@Override
-	public abstract void preencherParametros(Object orm, PreparedStatement ps);
-
 }
