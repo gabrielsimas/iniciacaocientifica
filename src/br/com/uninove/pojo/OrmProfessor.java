@@ -23,6 +23,8 @@ public class OrmProfessor {
 		this.cursos = cursos;
 	}
 
+	
+
 	public Integer getCodigo() {
 		return codigo;
 	}

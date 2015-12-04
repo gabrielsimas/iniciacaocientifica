@@ -4,56 +4,79 @@ import java.util.List;
 
 public class OrmDisciplina {
 	
-	private Integer codigo;
-	private String nome;
+	private Integer cod_disciplina;
+	private String disciplina;
 	private List<OrmProfessor> professores;
 	private List<OrmCurso> cursos;
 	
 	public OrmDisciplina() {
 	}
 	
-	public OrmDisciplina(Integer codigo, String nome, List<OrmProfessor> professores, List<OrmCurso> cursos) {
-		this.codigo = codigo;
-		this.nome = nome;
+	
+
+	public OrmDisciplina(Integer cod_disciplina, String disciplina, List<OrmProfessor> professores,
+			List<OrmCurso> cursos) {
+		this.cod_disciplina = cod_disciplina;
+		this.disciplina = disciplina;
 		this.professores = professores;
 		this.cursos = cursos;
 	}
+	
+	
 
-	public Integer getCodigo() {
-		return codigo;
+
+
+	public Integer getCod_disciplina() {
+		return cod_disciplina;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
+
+
+	public void setCod_disciplina(Integer cod_disciplina) {
+		this.cod_disciplina = cod_disciplina;
 	}
 
-	public String getNome() {
-		return nome;
+
+
+	public String getDisciplina() {
+		return disciplina;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+
+
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
 	}
+
+
 
 	public List<OrmProfessor> getProfessores() {
 		return professores;
 	}
 
+
+
 	public void setProfessores(List<OrmProfessor> professores) {
 		this.professores = professores;
 	}
+
+
 
 	public List<OrmCurso> getCursos() {
 		return cursos;
 	}
 
+
+
 	public void setCursos(List<OrmCurso> cursos) {
 		this.cursos = cursos;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Disciplina [codigo=" + codigo + ", nome=" + nome + ", professores=" + professores + ", cursos=" + cursos + "]";
+		return "Disciplina [cod_disciplina=" + cod_disciplina + ", disciplina=" + disciplina + ", professores=" + professores + ", cursos=" + cursos + "]";
 	}
 	
 	

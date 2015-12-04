@@ -41,9 +41,10 @@ public abstract class DaoAbastract<T> implements IDAO<T> {
 	
 	public int LastId(){
 		int id = 0;
-		ResultSet resultset = this.listaResultSet("ORDER BY cod_professor DESC limit 1", null);
+		ResultSet resultset = this.listaResultSet(null,null);
 		try {
 			if (resultset.next()) {
+				resultset.last();
 				id = resultset.getInt(1);
 			}
 		} catch (Exception e) {
