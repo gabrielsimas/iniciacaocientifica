@@ -25,19 +25,6 @@ public class DaoProfessor extends DaoAbastract<OrmProfessor> {
 		orm.setCodigo(rs.getInt("cod_professor"));
 		orm.setNome(rs.getNString("nome"));
 		orm.setEmail(rs.getNString("email"));
-		
-		ResultSet listaResultSet = this.listaResultSet("select cod_disciplina from prof_disciplinas where  "
-				+ "cod_professor = ?", new Object[] { orm.getCodigo()});
-		String ids = "(0,";
-		while (listaResultSet.next()) {
-			ids += listaResultSet.getInt(0);
-		}
-		
-		ids += ")";
-		
-		List<OrmDisciplina> disciplinas = new DaoDisciplinas().listaObjetos(" Where cod_disciplina in " + ids, null);
-		orm.setDisciplinas(disciplinas);
-		
 		return orm;
 	}
 
