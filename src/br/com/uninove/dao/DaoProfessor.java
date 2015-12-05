@@ -3,8 +3,7 @@ package br.com.uninove.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
+import java.util.List;
 
 import br.com.uninove.pojo.OrmDisciplina;
 import br.com.uninove.pojo.OrmProfessor;
@@ -21,30 +20,33 @@ public class DaoProfessor extends DaoAbastract<OrmProfessor> {
 	}
 
 	@Override
-	public ResultSet preencherORM(ResultSet rs) throws Exception {
-		OrmProfessor professor = new OrmProfessor();
-		professor.setCodigo(rs.getInt("cod_professor"));
-		professor.setNome(rs.getNString("nome"));
-		professor.setEmail(rs.getNString("email"));
-		return rs;
+	public OrmProfessor preencherORM(ResultSet rs) throws Exception {
+		OrmProfessor orm = new OrmProfessor();
+		orm.setCodigo(rs.getInt("cod_professor"));
+		orm.setNome(rs.getNString("nome"));
+		orm.setEmail(rs.getNString("email"));
+		
+		ResultSet listaResultSet = this.listaResultSet("select cod_disciplina from prof_disciplinas where  "
+				+ "cod_professor = ?", new Object[] { orm.getCodigo()});
+		String ids = "(0,";
+		while (listaResultSet.next()) {
+			ids += listaResultSet.getInt(0);
+		}
+		
+		ids += ")";
+		
+		List<OrmDisciplina> disciplinas = new DaoDisciplinas().listaObjetos(" Where cod_disciplina in " + ids, null);
+		orm.setDisciplinas(disciplinas);
+		
+		return orm;
 	}
 
 	@Override
-	public void preencherParametros(OrmProfessor professor, PreparedStatement ps) {
+	public void preencherParametros(OrmProfessor orm, PreparedStatement ps) {
 		try {
-			ps.setString(1, professor.getNome());
-			ps.setNString(2, professor.getEmail());
-			ps.setInt(3, professor.getCodigo());
-			ps.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void preencherParametros(OrmDisciplina professor, PreparedStatement ps) {
-		try {
-			ps.setString(1, professor.getDisciplina());
-			ps.setInt(2, professor.getCod_disciplina());
+			ps.setString(1, orm.getNome());
+			ps.setNString(2, orm.getEmail());
+			ps.setInt(3, orm.getCodigo());
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,9 +62,9 @@ public class DaoProfessor extends DaoAbastract<OrmProfessor> {
 			preencherParametros(orm, ps);
 			
 			for (OrmDisciplina disciplina : orm.getDisciplinas()) {
-				query = "INSET INTO disciplinas (disciplina, cod_disciplina) VALUES (?,?)";
+				query = "INSET INTO prof_disciplinas (cod_professor, cod_disciplina) VALUES (?,?)";
 				ps = (PreparedStatement) this.con.prepareStatement(query);
-				preencherParametros(orm, ps);
+				preencherParametros(new int[] {orm.getCodigo(),disciplina.getCod_disciplina()}, ps);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,6 +79,14 @@ public class DaoProfessor extends DaoAbastract<OrmProfessor> {
 			PreparedStatement ps = (PreparedStatement) this.con.prepareStatement(query);
 			preencherParametros(orm, ps);
 			
+			this.table = "prof_disciplinas";
+			this.delete("Where cod_professor = ?", new Object[] {orm.getCodigo()});
+			
+			for (OrmDisciplina disciplina : orm.getDisciplinas()) {
+				query = "INSET INTO prof_disciplinas (cod_professor, cod_disciplina) VALUES (?,?)";
+				ps = (PreparedStatement) this.con.prepareStatement(query);
+				preencherParametros(new int[] {orm.getCodigo(),disciplina.getCod_disciplina()}, ps);
+			}
 		
 
 		} catch (Exception e) {

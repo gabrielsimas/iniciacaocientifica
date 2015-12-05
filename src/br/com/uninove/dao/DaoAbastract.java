@@ -24,9 +24,27 @@ public abstract class DaoAbastract<T> implements IDAO<T> {
 
 	@Override
 	public abstract void update(T orm);
-
+	
 	@Override
-	public void delete(String where, T[] valores) {
+	public abstract T preencherORM(ResultSet resultSet) throws Exception;
+	
+	@Override
+	public void preencherParametros(int[] orm, PreparedStatement ps) {
+		try {
+			int index = 0;
+			for (int i : orm) {
+				index++;
+				ps.setInt(index, orm[index - 1]);
+			}
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public void delete(String where, Object[] valores) {
 		String query = "DELETE * FROM " + this.table + where;
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -54,9 +72,9 @@ public abstract class DaoAbastract<T> implements IDAO<T> {
 	}
 
 	@Override
-	public List<ResultSet> listaObjetos(String where, T[] valores) {
+	public List<T> listaObjetos(String where, Object[] valores) {
 		ResultSet resultset = this.listaResultSet(where, valores);
-		List<ResultSet> lista = new ArrayList<>();
+		List<T> lista = new ArrayList<>();
 
 		try {
 			while (resultset.next()) {
@@ -70,8 +88,7 @@ public abstract class DaoAbastract<T> implements IDAO<T> {
 	}
 
 	@Override
-	public ResultSet listaResultSet(String where, T[] valores) {
-		String query = "SELECT * FROM " + this.table + " " + where;
+	public ResultSet listaResultSet(String query, Object[] valores) {
 		try {
 			PreparedStatement ps =  con.prepareStatement(query);
 			if (valores != null) {

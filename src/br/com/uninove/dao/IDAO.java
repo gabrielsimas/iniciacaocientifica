@@ -9,11 +9,13 @@ public interface IDAO<T> {
 	void update(T orm);
 	void delete(String where, T[] valores);
 	
-	List<ResultSet> listaObjetos(String where, T[] valores);
+	List<T> listaObjetos(String where, Object[] valores);
 	
-	ResultSet listaResultSet(String query, T[] valores);
+	ResultSet listaResultSet(String query, Object[] valores);
 	
-	ResultSet preencherORM(ResultSet resultSet) throws Exception;
+	T preencherORM(ResultSet resultSet) throws Exception;
 	
 	void preencherParametros(T orm, PreparedStatement ps);
+	
+	void preencherParametros(int[] orm, PreparedStatement ps);
 }
